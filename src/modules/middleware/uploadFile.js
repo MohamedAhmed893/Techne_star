@@ -1,5 +1,6 @@
 import multer from "multer"
 import { v4 as uuidv4 } from 'uuid';
+import { AppError } from "../../utils/AppError.js";
 
 
 
@@ -16,7 +17,6 @@ let options =(folderName)=>{
     function fileFilter(req, file, cb) {
         if (file.mimetype.startsWith('image')) {
             cb(null, true)
-
         } else {
             cb(new AppError('images only'))
 
