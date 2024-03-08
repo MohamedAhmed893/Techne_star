@@ -13,6 +13,17 @@ let options =(folderName)=>{
             cb(null, uuidv4() + '-' + file.originalname)
         }
     })
-    return multer({ storage  })
+    function fileFilter(req, file, cb) {
+        if (file.mimetype.startsWith('image')) {
+            cb(null, true)
+
+        } else {
+            cb(new AppError('images only'))
+
+        }
+
+
+    }
+    return multer({ storage ,fileFilter })
 }
 export const uploadFile = (fieldName, folderName) =>options(folderName).single(fieldName)
