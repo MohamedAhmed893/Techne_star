@@ -47,7 +47,7 @@ const signUp =catchAsyncError(async (req,res,next)=>{
 const signIn=catchAsyncError(async (req,res,next)=>{
     const {email,password}=req.body
     const user =await userModel.findOne({email})
-    if(!user) return next(new AppError("Account Not Found",401))
+    if(!user || !user.confrimEmail) return next(new AppError("Account Not Found Or Not Verfied",401))
     if(!(await bcrypt.compare(password, user.password))) return next(new AppError("Password Wrong",403))
 
     if(!user.confrimEmail) return next(new AppError("Please Verfiy Your Email and Login Again"))

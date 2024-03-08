@@ -22,7 +22,7 @@ const blogSchema =mongoose.Schema({
 
 },{timestamps:true})
 blogSchema.post('init',(doc)=>{
-    doc.imgCover ='https://techne-star.onrender.com/'+'blog/'+doc.imgCover
+    doc.imgCover ='http://localhost:5002/'+'blog/'+doc.imgCover
 })
 
   blogSchema.virtual('myComments', {
