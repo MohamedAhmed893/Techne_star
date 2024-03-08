@@ -22,16 +22,17 @@ const blogSchema =mongoose.Schema({
 
 },{timestamps:true})
 blogSchema.post('init',(doc)=>{
-    doc.imgCover ='http://localhost:5002/'+'blog/'+doc.imgCover
+    doc.imgCover ='https://techne-star.onrender.com/'+'blog/'+doc.imgCover
 })
-blogSchema.virtual('myComments', {
+
+  blogSchema.virtual('myComments', {
     ref: 'comment',
     localField: '_id',
     foreignField: 'blog'
   });
-
-  blogSchema.pre(/^find/,function (){
+  blogSchema.pre(/^find/,function (next){
     this.populate('myComments')
+    next()
   })
 
 export const blogModel=mongoose.model('blog',blogSchema)

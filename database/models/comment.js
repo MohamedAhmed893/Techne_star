@@ -6,12 +6,12 @@ const commentSchema=mongoose.Schema({
         trim:true 
     } ,
     userId:{
-        type:mongoose.Types.ObjectId ,
+        type:mongoose.Schema.Types.ObjectId ,
         ref:'user' ,
         required:true
     } ,
     blog:{
-        type:mongoose.Types.ObjectId ,
+        type:mongoose.Schema.Types.ObjectId ,
         ref:'blog' ,
         required:true
     }
