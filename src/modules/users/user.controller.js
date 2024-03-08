@@ -14,6 +14,9 @@ const getUser =catchAsyncError(async (req,res,next)=>{
 })
 
 const updateUser =catchAsyncError (async(req,res,next)=>{
+    if(req.file){
+        req.body.imgCover =req.file.filename
+    }
     const user =await userModel.findByIdAndUpdate(req.user._id,req.body,{new:true})
     !user && next(new AppError("User Not Found",403))
     user && res.json({message:"success",user})
