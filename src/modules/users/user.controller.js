@@ -28,7 +28,7 @@ let forgetPassword = catchAsyncError(async (req, res) => {
     const { email } = req.body;
     const user = await userModel.findOne({ email });
 
-    if (!user || !user.confirmEmail) {
+    if (!user && !user.confirmEmail) {
         return res.status(404).json({message:'User not Found or Not Verfied'});
     }
 
