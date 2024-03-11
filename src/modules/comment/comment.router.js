@@ -5,7 +5,6 @@ import { protectedRoutes } from '../middleware/auths.js'
 const commentRouter =express.Router()
 
 commentRouter.post('/',protectedRoutes,CommentCo.addComment)
-commentRouter.get('/',protectedRoutes,CommentCo.getAllComments)
 commentRouter.get('/:id',protectedRoutes,CommentCo.getSpacificComment)
 commentRouter.put('/:id',protectedRoutes,CommentCo.updateComment)
 commentRouter.delete('/:id',protectedRoutes,CommentCo.deleteComment)
