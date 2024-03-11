@@ -1,4 +1,5 @@
 import { blogModel } from "../../../database/models/blog.js";
+import { commentModel } from "../../../database/models/comment.js";
 import { AppError } from "../../utils/AppError.js";
 import { catchAsyncError } from "../../utils/catchAsyncError.js";
 
@@ -42,10 +43,15 @@ const deleteBlog=catchAsyncError(async(req,res,next)=>{
    Blog && res.json({message:"Blog Deleted"})
 })
 
+const getAllCommentsOfBlog =catchAsyncError(async (req,res,next)=>{
+    const myComments =await commentModel.find({blog:req.params.blog})
+    res.json({message:"success",myComments})
+})
 export {
     addBlog ,
     getAllBlog ,
     getSpacificBlog ,
     updateBlog ,
-    deleteBlog 
+    deleteBlog ,
+    getAllCommentsOfBlog
 }
