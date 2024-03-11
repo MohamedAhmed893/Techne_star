@@ -25,6 +25,8 @@ blogSchema.post('init',(doc)=>{
     doc.imgCover ='https://techne-star.onrender.com/'+'blog/'+doc.imgCover
 })
 
-
+blogSchema.post('save',(doc)=>{
+  doc.imgCover ='https://techne-star.onrender.com/'+'blog/'+doc.imgCover
+})
 
 export const blogModel=mongoose.model('blog',blogSchema)
