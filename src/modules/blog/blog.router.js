@@ -6,7 +6,7 @@ import { uploadFile } from '../middleware/uploadFile.js'
 const blogRouter = express.Router()
 blogRouter.post('/',protectedRoutes,allowedTo('admin'),uploadFile('image','blog'),blogCo.addBlog)
 blogRouter.get('/',blogCo.getAllBlog)
-blogRouter.get('/:id',protectedRoutes,blogCo.getSpacificBlog)
+blogRouter.get('/:id',blogCo.getSpacificBlog)
 blogRouter.put('/:id',protectedRoutes,allowedTo('admin'),uploadFile('image','blog'),blogCo.updateBlog)
 blogRouter.delete('/:id',protectedRoutes,allowedTo('admin'),blogCo.deleteBlog)
 blogRouter.get('/getcomments/:blog',protectedRoutes,blogCo.getAllCommentsOfBlog)
