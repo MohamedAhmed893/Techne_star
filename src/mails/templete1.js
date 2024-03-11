@@ -143,7 +143,7 @@ export let htmlResetPassword =(token)=>{
           <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
             <tr>
               <td align="left" bgcolor="#ffffff" style="padding: 36px 24px 0; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; border-top: 3px solid #d4dadf;">
-                <h1 style="margin: 0; font-size: 32px; font-weight: 700; letter-spacing: -1px; line-height: 48px;">Speech Emotion</h1>
+                <h1 style="margin: 0; font-size: 32px; font-weight: 700; letter-spacing: -1px; line-height: 48px;">Techne_star</h1>
               </td>
             </tr>
           </table>
@@ -198,7 +198,7 @@ export let htmlResetPassword =(token)=>{
             <tr>
               <td align="left" bgcolor="#ffffff" style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
                 <p style="margin: 0;">If that doesn't work, copy and paste the following link in your browser:</p>
-                <p style="margin: 0;"><a href="https://speech-sapm.onrender.com/users/reset-password/${token}" target="_blank">https://blogdesire.com/xxx-xxx-xxxx</a></p>
+                <p style="margin: 0;"><a href="https://techne-star.onrender.com/users/reset-password/${token}" target="_blank">https://blogdesire.com/xxx-xxx-xxxx</a></p>
               </td>
             </tr>
             <!-- end copy -->

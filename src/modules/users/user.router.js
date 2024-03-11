@@ -6,7 +6,7 @@ import { uploadFile } from '../middleware/uploadFile.js'
 
 const userRouter =express.Router()
 userRouter.get('/',protectedRoutes,getUser)
-userRouter.put('/',protectedRoutes,uploadFile('image','blog'),updateUser)
+userRouter.put('/',protectedRoutes,uploadFile('image','user'),updateUser)
 userRouter.delete('/',protectedRoutes,deleteUser)
 userRouter.post('/forgot-password', forgetPassword);
 
