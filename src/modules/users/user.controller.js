@@ -39,9 +39,9 @@ let forgetPassword = catchAsyncError(async (req, res) => {
     let token = jwt.sign({ email: email }, "resetPassword")
     // Create a Nodemailer transporter
     const transporter = createTransport({
-        service: 'gmail',
+        service: 'outlook',
         auth: {
-            user: "anamohamedahmed893@gmail.com",
+            user: "mo73med893@outlook.com",
             pass: process.env.PASSWORD_EMAIL,
         },
     });
@@ -49,7 +49,7 @@ let forgetPassword = catchAsyncError(async (req, res) => {
 
     // Send password reset email
     const mailOptions = {
-        from: '"Mohamed 👻" <anamohamedahmed893@gmail.com>',
+        from: '"Mohamed 👻" <mo73med893@outlook.com>',
         to: email,
         subject: 'Password Reset ✔',
         html: htmlResetPassword(token),

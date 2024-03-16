@@ -18,17 +18,17 @@ const signUp =catchAsyncError(async (req,res,next)=>{
     const user =new userModel(req.body)
     await user.save()
     const   transporter = nodemailer.createTransport({
-        service: 'gmail',
+        service: 'outlook',
         auth: {
             // TODO: replace `user` and `pass` values from <https://forwardemail.net>
-            user: "anamohamedahmed893@gmail.com",
+            user: "mo73med893@outlook.com",
             pass: process.env.PASSWORD_EMAIL,
         },
     });
     const verificationNumber = randomInt(1000, 9999); // توليد رقم تحقق عشوائي بين 1000 و 9999
     emailVerificationNumbers[userEmail] = verificationNumber;
     const mailOptions = {
-        from: '"Mohamed 👻" <anamohamedahmed893@gmail.com>', // sender address
+        from: '"Mohamed 👻" <mo73med893@outlook.com>', // sender address
         to: req.body.email, // list of receivers
         subject: "Confirm Your Email ✔", // Subject line
         text:`${verificationNumber}`,
