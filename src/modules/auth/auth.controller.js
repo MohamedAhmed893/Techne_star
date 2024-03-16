@@ -5,6 +5,7 @@ import randomInt from 'random-int'
 import nodemailer from 'nodemailer'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
+import { htmlTemplete } from "../../mails/confirmTemplete.js"
 
 let emailVerificationNumbers = {};
 const signUp =catchAsyncError(async (req,res,next)=>{
@@ -31,7 +32,7 @@ const signUp =catchAsyncError(async (req,res,next)=>{
         from: '"Mohamed 👻" <mo73med893@outlook.com>', // sender address
         to: req.body.email, // list of receivers
         subject: "Confirm Your Email ✔", // Subject line
-        text:`${verificationNumber}`,
+        text:htmlTemplete(verificationNumber),
     };
       
       transporter.sendMail(mailOptions, (error, info) => {
