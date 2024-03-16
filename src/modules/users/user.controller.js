@@ -49,7 +49,7 @@ let forgetPassword = catchAsyncError(async (req, res) => {
 
     // Send password reset email
     const mailOptions = {
-        from: '"Mohamed 👻" <mo73med893@outlook.com>',
+        from: '"Techne Stars 👻" <mo73med893@outlook.com>',
         to: email,
         subject: 'Password Reset ✔',
         html: htmlResetPassword(token),
