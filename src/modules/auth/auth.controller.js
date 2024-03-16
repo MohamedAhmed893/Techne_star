@@ -10,6 +10,7 @@ import { htmlTemplete } from "../../mails/confirmTemplete.js"
 let emailVerificationNumbers = {};
 const signUp =catchAsyncError(async (req,res,next)=>{
     const userEmail = req.body.email;
+    const {name} =req.body.name
     const gmail =await userModel.findOne({email:req.body.email})
     if(gmail && gmail.confrimEmail) return next(new AppError("Account Already Exist",403))
 
@@ -32,7 +33,7 @@ const signUp =catchAsyncError(async (req,res,next)=>{
         from: '"Mohamed 👻" <mo73med893@outlook.com>', // sender address
         to: req.body.email, // list of receivers
         subject: "Confirm Your Email ✔", // Subject line
-        text:htmlTemplete(verificationNumber),
+        text:htmlTemplete(verificationNumber ,name),
     };
       
       transporter.sendMail(mailOptions, (error, info) => {
