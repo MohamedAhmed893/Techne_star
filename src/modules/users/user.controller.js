@@ -6,6 +6,7 @@ import { AppError } from "../../utils/AppError.js";
 import { catchAsyncError } from "../../utils/catchAsyncError.js";
 import jwt from 'jsonwebtoken'
 import { createTransport } from "nodemailer";
+import cloudinary from "../cloudinary/cloudinary.js";
 
 const getUser =catchAsyncError(async (req,res,next)=>{
     const user =await userModel.findById(req.user._id)
@@ -15,7 +16,14 @@ const getUser =catchAsyncError(async (req,res,next)=>{
 
 const updateUser =catchAsyncError (async(req,res,next)=>{
     if(req.file){
-        req.body.imgCover =req.file.filename
+        const result =await cloudinary.uploader.upload(req.file.path,
+            {
+                folder: 'uploads/user',
+                public_id: `${Date.now()}`, // Optional: specify a custom public_id
+                resource_type: "auto"
+            })
+
+        req.body.imgCover =result.url
     }
     const user =await userModel.findByIdAndUpdate(req.user._id,req.body,{new:true})
     !user && next(new AppError("User Not Found",403))

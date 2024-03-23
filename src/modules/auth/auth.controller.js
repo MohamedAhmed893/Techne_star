@@ -6,6 +6,7 @@ import nodemailer from 'nodemailer'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import { htmlTemplete } from "../../mails/confirmTemplete.js"
+import cloudinary from "../cloudinary/cloudinary.js"
 
 let emailVerificationNumbers = {};
 const signUp =catchAsyncError(async (req,res,next)=>{
@@ -15,7 +16,14 @@ const signUp =catchAsyncError(async (req,res,next)=>{
     if(gmail && gmail.confrimEmail) return next(new AppError("Account Already Exist",403))
 
     if(req.file){
-        req.body.imgCover =req.file.filename
+        const result =await cloudinary.uploader.upload(req.file.path,
+            {
+                folder: 'uploads/user',
+                public_id: `${Date.now()}`, // Optional: specify a custom public_id
+                resource_type: "auto"
+            })
+
+        req.body.imgCover =result.url
     }
     const user =new userModel(req.body)
     await user.save()

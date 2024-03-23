@@ -53,11 +53,5 @@ userSchema.pre('save',function(){
 userSchema.pre('findOneAndUpdate', function () {
     if (this._update.password) this._update.password = bcrypt.hashSync(this._update.password, 8)
  })
- userSchema.post('init',(doc)=>{
-    doc.imgCover ='https://techne-star.onrender.com/'+'user/'+doc.imgCover
-})
- userSchema.post('save',(doc)=>{
-    doc.imgCover ='https://techne-star.onrender.com/'+'user/'+doc.imgCover
-})
 
 export const userModel =mongoose.model('user',userSchema)
